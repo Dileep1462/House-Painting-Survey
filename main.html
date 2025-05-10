@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Painting Survey</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <h3>Screener Questionnaire</h3>
+    <div class="section">
+      <div class="q">
+        Q1. Have you been involved in selecting or purchasing house 
+        paint in the last 2 years?
+        [Entry Condition:Single Select]
+      </div>
+      <label for="selecting">
+        <input type="radio" name="based" value="Yes">Yes
+      </label> 
+      <label for="selecting">
+        <input type="radio" name="based" value="No">No
+      </label>
+    </div>
+
+    <div class="section">
+      <div class="q">
+        Q2.In what way were you involved in the painting process?
+         [Single Select]
+      </div>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="selecting">Selected the color or brand
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="selecting">Purchesed the paint
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="selecting">Painted it yourself
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="selecting">Supervised or hired someone to paint
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="selecting"> Others : 
+        <input type="text">
+      </label>
+    </div>
+
+    <h3>Demographic Questionnaire</h3>
+    <div class="section">
+      <div class="q">
+        Q3.What is your age? [Single Select]
+      </div>
+      <select name="selecting">
+        <option value="select">select</option>
+        <option value="under 25">under 25</option>
+        <option value="25-34">25-34</option>
+        <option value="35-44">35-44</option>
+        <option value="45-54">45-54</option>
+        <option value="55 and above">55 and above</option>
+      </select>
+    </div>
+    
+    <div class="section">
+      <div class="q">
+        Q4.What is your current residence status?
+        [Single Select]
+      </div>
+      <label for="selecting">
+        <input type="radio" name="residence" value="home Owner">Home Owner
+      </label>
+      <label for="selecting">
+        <input type="radio" name="residence" value="selecting">Renter
+      </label>
+      <label for="selecting">
+        <input type="radio" name="residence" value="selecting">Living with Family
+      </label>
+      <label for="selecting">
+        <input type="radio" name="residence" value="selecting">Other
+      </label>
+    </div>
+
+    <h3>Main Questionnaire</h3>
+    <div class="section">
+      <div class="q">
+        Q5. As a homeowner, how often do you repaint your house? [Single Select]
+      </div>
+      <label for="selecting">
+        <input type="radio" name="repaint_frequency" value="1-2 years"> Every 1-2 years
+      </label>
+      <label for="selecting">
+        <input type="radio" name="repaint_frequency" value="3-5 years"> Every 3-5 years
+      </label>
+      <label for="selecting">
+        <input type="radio" name="repaint_frequency" value="rarely"> Rarely / only when necessary
+      </label>
+    </div>
+
+    <div class="section">
+      <div class="q">
+        Q6.Which parts of your home were painted most recently? 
+        (Select all that apply) [Multi-Select]
+      </div>
+      <label for="selecting">
+        <input type="checkbox" name="Validating" value="selecting"> Interior walls
+      </label>
+      <label for="selecting">
+        <input type="checkbox" name="Validating" value="selecting"> Exterior walls
+      </label>
+      <label for="selecting">
+        <input type="checkbox" name="Validating" value="selecting"> Ceiling
+      </label>
+      <label for="selecting">
+        <input type="checkbox" name="Validating" value="selecting"> Doors
+      </label>
+      <label for="selecting">
+        <input type="checkbox" name="Validating" value="selecting"> Windows
+      </label>
+      <label for="selecting">
+        <input type="checkbox" name="Validating" value="selecting"> Furniture
+      </label>
+    </div>
+
+    <div class="section">
+      <div class="q">
+        Q7. You mentioned painting <span id="piped-items"></span> — 
+        what type of finish did you use for each?
+        [Single Grid with Question Text Piping]
+      </div>
+      <table id="finish-grid">
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Finish Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows inserted dynamically -->
+        </tbody>
+      </table>
+      <script>
+        // Simulate piped values from Q6
+        const pipedAreas = ["Interior walls","Exterior walls","Ceiling",
+        "Doors", "Windows","Furniture"]; // This should come from Q6 selection
+
+        const finishOptions = ["Matte", "Satin", "Glossy", "Don’t know"];
+        const pipedSpan = document.getElementById("piped-items");
+        pipedSpan.textContent = pipedAreas.join(", ");
+
+        const tbody = document.querySelector("#finish-grid tbody");
+
+        pipedAreas.forEach(area => {
+          const tr = document.createElement("tr");
+
+          const tdArea = document.createElement("td");
+          tdArea.textContent = area;
+
+          const tdSelect = document.createElement("td");
+          const select = document.createElement("select");
+
+          finishOptions.forEach(option => {
+            const opt = document.createElement("option");
+            opt.value = option;
+            opt.textContent = option;
+            select.appendChild(opt);
+          });
+
+          tdSelect.appendChild(select);
+          tr.appendChild(tdArea);
+          tr.appendChild(tdSelect);
+          tbody.appendChild(tr);
+        });
+      </script>
+    </div>
+
+    <div class="section">
+      <div class="q">
+        Q8.Which brand did you use for (Interior walls/Exterior walls,Ceiling,Doors,Windows,Furniture)
+        [PIPED AREA FROM Q6]?
+        [Single Select]
+      </div>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="Asian Paints"> Asian Paints
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="Berger"> Berger
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="Nerolac"> Nerolac
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="Dulax"> Dulux
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="Nippon Paints"> Nippon Paint
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="Don't remember"> Don't remember
+      </label>
+    </div>
+
+    <div class="section">
+      <div class="q">
+        Q9. How satisfied were you with your most recently used paint brand?
+        [Rating]
+      </div>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="Dissatisfied"> Very dissatisfied
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="Dissatisfied"> Dissatisfied
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="Neutral"> Neutral
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="Satisfied"> Satisfied
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="Satisfied"> Very satisfied
+      </label>
+    </div>
+
+    <div class="section">
+      <div class="q">
+        Q10.Ranking - Rank Top 3 Factors
+        <p>1 to the most important factor</p>
+        <p>2 to the second most important factor</p>
+        <p>3 to the third most important factor</p>
+        <p>leave the rest blank</p>
+      </div>
+      <form>
+    <div class="ranking-item">
+      <label for="rank_durability">Durability:</label>
+      <input type="number" id="rank_durability" name="rank_durability" min="1" max="3">
+    </div>
+    <div class="ranking-item">
+      <label for="rank_price">Price:</label>
+      <input type="number" id="rank_price" name="rank_price" min="1" max="3">
+    </div>
+    <div class="ranking-item">
+      <label for="rank_color">Color variety:</label>
+      <input type="number" id="rank_color" name="rank_color" min="1" max="3">
+    </div>
+    <div class="ranking-item">
+      <label for="rank_odor">Low odor:</label>
+      <input type="number" id="rank_odor" name="rank_odor" min="1" max="3">
+    </div>
+    <div class="ranking-item">
+      <label for="rank_eco">Eco-friendly:</label>
+      <input type="number" id="rank_eco" name="rank_eco" min="1" max="3">
+    </div>
+    <div class="ranking-item">
+      <label for="rank_brand">Brand name:</label>
+      <input type="number" id="rank_brand" name="rank_brand" min="1" max="3">
+    </div>
+  </form>
+    </div>
+
+    <div class="section">
+      <div class="q">
+        Q11. What is the biggest challenge you face when selecting or 
+        using house paint? (Open Text Box)
+      </div>
+      <textarea 
+        name="Challenges" placeholder="e.g Price, Color selection, etc.,">
+      </textarea>
+    </div>
+
+    <div class="section">
+      <div class="q">
+        Q12.[Based on Q10 selection]
+        You selected these as important: [Durability, Color Variety]. 
+        Rate your satisfaction for each with your last used brand.
+      </div>
+      <label for="Durability">Durability  
+        <select name="Durability" id="1">
+          <option value="">select</option>
+          <option value="1">Very unsatisfied</option>
+          <option value="2">Unsatisfied</option>
+          <option value="3">Neutral</option>
+          <option value="4">Satisfied</option>
+          <option value="5">Very satisfied</option>
+        </select>
+      </label>
+      <label for="Color variety">Color variety  
+        <select name="Color variety " id="2">
+          <option value="">select</option>
+          <option value="1">Very unsatisfied</option>
+          <option value="2">Unsatisfied</option>
+          <option value="3">Neutral</option>
+          <option value="4">Satisfied</option>
+          <option value="5">Very satisfied</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="section">
+      <div class="q">
+        Q13. Where do you usually buy your house paints? [Single Select]
+      </div>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="selecting">  Local hardware store
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="selecting"> Branded paint shop
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="selecting"> Online marketplace
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="selecting"> Home improvement chain (e.g., Home Dept)
+      </label>
+      <label for="selecting">
+        <input type="radio" name="Validating" value="selecting"> Others : 
+        <input type="text">
+      </label>
+    </div>
+
+    <div class="section">
+      <div class="q">
+        Q14. If you could request one improvement from paint companies, 
+        what would it be? [Open-end - Suggestion]
+
+      </div>
+      <textarea name="Suggestion" placeholder="Give a suggestion"></textarea>
+    </div>
+
+    <div class="section">
+      <div class="q">
+        If you would like to be informed about the results of this survey or 
+        participate in future research, please provide your contact (optional):
+      </div>
+      <label>
+        <strong>Email :</strong> <br>
+        <input class="contact" type="email" name="email">
+      </label>
+      <label>
+        <strong>Mobile number :</strong> <br>
+        <input class="contact" type="number">
+      </label>
+    </div>
+
+    
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const sections = document.querySelectorAll(".section");
+  const q1Radios = document.getElementsByName("based"); // Q1
+  const q3Select = document.querySelector('select[name="selecting"]'); // Q3
+  const q4Radios = document.querySelectorAll('input[name="residence"]'); // Q4
+  const q5 = sections[4]; // Q5 section
+
+  // Hide all except Q1 on initial load
+  for (let i = 1; i < sections.length; i++) {
+    sections[i].style.display = "none";
+  }
+
+  // Q1 logic: Show other sections if "Yes", redirect if "No"
+  q1Radios.forEach(radio => {
+    radio.addEventListener("change", function () {
+      if (this.value === "Yes") {
+        for (let i = 1; i < sections.length; i++) {
+          sections[i].style.display = "block";
+        }
+        q5.style.display = "none"; // Reset Q5 visibility
+        sessionStorage.setItem("eligible", "true");
+      } else {
+        sessionStorage.removeItem("eligible");
+        window.location.href = "termination.html";
+      }
+    });
+  });
+
+  // Refresh page if returning from termination.html and eligible was set
+  if (document.referrer.includes("termination.html") && sessionStorage.getItem("eligible") === "true") {
+    sessionStorage.removeItem("eligible");
+    window.location.href = window.location.href; // Full reload
+  }
+
+  // Q3 logic: Redirect if under 25
+  if (q3Select) {
+    q3Select.addEventListener("change", function () {
+      if (this.value.toLowerCase() === "under 25") {
+        sessionStorage.removeItem("eligible");
+        window.location.href = "termination.html";
+      }
+    });
+  }
+
+  // Q4 logic: Toggle Q5 based on Homeowner selection
+  q4Radios.forEach(radio => {
+    radio.addEventListener("change", function () {
+      const selectedValue = this.value.trim().toLowerCase();
+      if (selectedValue === "home owner" || selectedValue === "homeowner") {
+        q5.style.display = "block";
+      } else {
+        q5.style.display = "none";
+      }
+    });
+  });
+});
+</script>
+
+
+
+
+    <a href="http://127.0.0.1:5500/thanks.html" target="_blank">
+      <button type="submit"> SUBMIT </button>
+    </a>
+  </body>
+</html>

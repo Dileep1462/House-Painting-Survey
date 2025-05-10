@@ -1,0 +1,122 @@
+
+body{
+  background-color: whitesmoke;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+.section{
+   margin: auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.473);
+  margin-bottom: 15px;
+}
+
+.q{
+  font-size: 100%;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: black;
+}
+
+label{
+  display: block;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+select{
+  width: 85px;
+  padding: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: rgb(128, 122, 122);
+  cursor: pointer
+}
+select:hover{
+  border-color: black;
+}
+select:focus{
+  outline: none;
+  border-color: rgb(32, 147, 255);
+  box-shadow: 0 0 5px rgb(104, 194, 247);
+}
+
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.ranking-item label {
+  width: 150px;
+  margin-right: 10px;
+}
+.ranking-item input[type="number"] {
+  width: 60px;
+  padding: 5px;
+}
+
+textarea{
+  width: 100%;
+  height: 100px;
+  padding: 8px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: rgb(128, 122, 122);
+  cursor: pointer
+}
+textarea:hover{
+  border-color: rgb(19, 18, 18);
+}
+
+h3{
+  color: rgb(170, 0, 170);
+}
+
+.contact{
+  margin-top: 5px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button{
+  width: 100%;
+  margin-top: 15px;
+  padding: 8px;
+  font-size: 100%;
+  background-color: rgb(170, 0, 170);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.473);
+  cursor: pointer;
+  transition: 0.3ms;
+}
+button:hover{
+  opacity: 0.8;
+}
+button:active{
+  opacity: 0.5;
+}
+
+
+
+
